@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        * {
+            cursor: none
+        }
+
+        body {
+            overflow: hidden
+        }
+
+        .loading {
+            background-color: #FFF;
+            width: 100%;
+            display: fixed
+        }
+
+        .loading img {
+            display: block;
+            min-height: 209px;
+            min-width: 200px;
+        }
+
+        .mouse {
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            background-color: #fff782;
+            position: absolute;
+            animation: mouseAnimation .5s infinite ease-in-out alternate;
+            left: 0;
+            top: 0
+        }
+
+        @keyframes mouseAnimation {
+            from {
+                width: 25px;
+                height: 25px
+            }
+
+            to {
+                width: 15px;
+                height: 15px
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="loading">
+    <img src="http://a.top4top.net/p_1990j031.gif" alt="Loading">
+</div>
+<div class="mouse original"></div>
+</body>
+
+<script type="text/javascript">
+    $(".loading").height($(window).height());
+    $(".loading").width($(window).width());
+
+
+    $(".loading img").css({
+        paddingTop: ($(".loading").height() - $(".loading img").height()) / 2,
+        paddingLeft: ($(".loading").width() - $(".loading img").width()) / 2
+    });
+
+    $(window).resize(function () {
+
+        "use strict";
+
+        $(".loading").height($(window).height());
+        $(".loading").width($(window).width());
+
+
+        $(".loading img").css({
+            paddingTop: ($(".loading").height() - $(".loading img").height()) / 2,
+            paddingLeft: ($(".loading").width() - $(".loading img").width()) / 2
+        });
+
+    });
+
+    $(window).mousemove(function (e) {
+
+        "use strict";
+
+        $(".original").css({
+            left: e.pageX - 16,
+            top: e.pageY - 16
+        });
+
+    });
+
+    $("body").on("click", function (e) {
+
+        "use strict";
+
+        $(".original").clone(true).appendTo("body").css({
+            left: e.pageX - 16,
+            top: e.pageY - 16
+        }).removeClass("original");
+
+    });
+</script>
+</html>
